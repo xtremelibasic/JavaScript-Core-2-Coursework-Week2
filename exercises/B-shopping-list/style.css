@@ -32,6 +32,9 @@ body {
   font-weight: 600;
   text-transform: uppercase;
 }
+li{
+  font-size: 2rem;
+}
 
 /* Buttons */
 .btn {

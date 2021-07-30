@@ -1,5 +1,39 @@
+//Accessing the content div
+let content = document.getElementById("content");
+
 function highlightWords(paragraph, colours) {
-  // Write your code here...
+  let paragraphElement = document.createElement("p");
+  let paragraphArray = paragraph.split(" ");
+  let newParagraph = "";
+  paragraphArray.map(word => {
+    newParagraph += "<span>" + word + "</span>" + " ";
+  })
+  paragraphElement.innerHTML = newParagraph;
+
+  let dropDown = document.createElement("select");
+  
+  colours.forEach(colour => {
+    let colourOptions = document.createElement("option");
+    colourOptions.innerHTML = colour;
+    dropDown.append(colourOptions);
+  })
+
+  content.append(paragraphElement);
+  content.append(dropDown);
+  //Accessing all span elements
+  let allSpanElements = document.querySelectorAll("span");
+  
+  //Looping through and adding an event listener for each word and changing their colours
+  allSpanElements.forEach( element => {
+    element.addEventListener("click", (event) => {
+      if(element.style.color === "black"){
+        element.style.color = dropDown.value;
+      } else {
+        element.style.color = "black";
+      } 
+    })
+  })
+  
 }
 
 const paragraph =

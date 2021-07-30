@@ -1,6 +1,36 @@
+
 function populateTodoList(todos) {
   let list = document.getElementById("todo-list");
-  // Write your code to create todo list elements with completed and delete buttons here, all todos should display inside the "todo-list" element.
+  list.style.listStyle = "none";
+
+  todos.forEach(todo => {
+    let todoItem = document.createElement("li");
+    todoItem.innerHTML = todo.task;
+    list.append(todoItem);
+
+    let iconsDiv = document.createElement("div");
+    iconsDiv.classList.add("icons");
+    todoItem.append(iconsDiv);
+
+    let tickIcon = document.createElement("i");
+    tickIcon.classList.add("fa", "fa-check");
+    iconsDiv.append(tickIcon);
+
+    let trashIcon = document.createElement("i");
+    trashIcon.classList.add("fa", "fa-trash");
+    iconsDiv.append(trashIcon);
+
+    tickIcon.addEventListener("click", () => {
+      todoItem.style.textDecoration = "line-through";
+      todo.completed = true;
+    })
+
+    console.log(todo);
+
+    trashIcon.addEventListener("click", () => {
+      todoItem.remove();
+    })
+  })
 }
 
 // These are the same todos that currently display in the HTML
@@ -17,9 +47,25 @@ function addNewTodo(event) {
   // The code below prevents the page from refreshing when we click the 'Add Todo' button.
   event.preventDefault();
   // Write your code here... and remember to reset the input field to be blank after creating a todo!
+  let newTodo = document.getElementById("todoInput").value;
+  let addTodoBtn = document.getElementById("addTodo");
+  addTodoBtn.addEventListener("click", () => {
+    if(newTodo.length > 0){
+      let newArray= [];
+      let newObject = {};
+      newObject.task = newTodo;
+      newObject.completed = false;
+      newArray.push(newObject)
+      populateTodoList(newArray);
+      newTodo = "";
+      console.log(newTodo);
+    }
+  })
+  
 }
-
+console.log(todos);
 // Advanced challenge: Write a fucntion that checks the todos in the todo list and deletes the completed ones (we can check which ones are completed by seeing if they have the line-through styling applied or not).
-function deleteAllCompletedTodos() {
-  // Write your code here...
+function deleteAllCompletedTodos(todosArray) {
+
 }
+deleteAllCompletedTodos(todos);

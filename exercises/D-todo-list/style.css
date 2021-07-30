@@ -33,6 +33,16 @@ body {
   text-transform: uppercase;
 }
 
+/* Heading */
+h1{
+  font-size:4em;
+}
+
+/* List Item */
+ul li{
+  font-size:3em;
+}
+
 /* Buttons */
 .btn {
   border-radius: 0.15em;

@@ -32,6 +32,37 @@ body {
   font-weight: 600;
   text-transform: uppercase;
 }
+/* Heading */
+h1{
+  font-size:4em;
+}
+
+/* List */
+ul {
+    display: flex;
+}
+
+ul li {
+    list-style: none;
+    margin: 50px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* List  Items*/
+
+ul li p{
+  font-size:2em;
+}
+ul li img{
+  height:auto;
+  width:400px;
+}
+
+
+
 
 /* Buttons */
 .btn {
